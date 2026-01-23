@@ -12,23 +12,18 @@ yay -S --needed \
   rlwrap \
   cowsay \
   difftastic \
-  docker \
-  docker-compose \
   entr \
   fd \
-  sd \
-  firefox \
+  sd  \
   fish \
   fisher \
   zoxide \
   flatpak \
   fzf \
-  htop \
+  btop \
   httpie \
   jq \
   yq \
-  lazydocker-bin \
-  lazygit \
   less \
   man \
   neovim \
@@ -58,7 +53,7 @@ yay -S --needed \
   swaybg \
   waybar \
   xdg-desktop-portal-wlr \
-  kitty \
+  ghostty \
   pavucontrol \
   wofi \
   mako \
@@ -69,15 +64,11 @@ yay -S --needed \
   slurp \
   playerctl \
   lxsession \
-  thunar \
-  thunar-volman \
+  dolphin \
   usage-bin \
   mise-bin \
   lxqt-openssh-askpass
 
-sudo systemctl enable docker
-sudo systemctl start docker
-
-xdg-settings set default-web-browser zen.desktop
+xdg-settings set default-web-browser chromium
 
 rustup default stable
