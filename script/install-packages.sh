@@ -2,7 +2,7 @@
 
 set -xe
 
-yay -S --needed \
+paru -S --needed \
   asciinema \
   bat \
   fennel \
@@ -67,6 +67,8 @@ yay -S --needed \
   dolphin \
   usage-bin \
   mise-bin \
+  hiddify-git \
+  prismlauncher-git \
   lxqt-openssh-askpass
 
 xdg-settings set default-web-browser chromium
