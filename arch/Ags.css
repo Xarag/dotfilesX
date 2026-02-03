@@ -1,0 +1,105 @@
+/* ~/.config/ags/style.css */
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+}
+
+/* Define the Cyber Green color palette */
+.theme {
+  --background: #0d0d0d;
+  --foreground: #dcdcdc;
+  --green: #39ff14;
+  --yellow: #ffff00;
+  --red: #ff3333;
+  --mauve: #ff00ff;
+  --surface: #1a1a1a;
+  --overlay: #2c2c2c;
+}
+
+/* The Bar */
+.bar {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.bar-segment {
+  background-color: var(--surface);
+  padding: 4px 12px;
+  margin: 5px 0px;
+  border-radius: 12px;
+}
+
+.left-bar {
+  margin-left: 8px;
+}
+
+.right-bar {
+  margin-right: 8px;
+}
+
+/* Workspaces */
+.workspaces button {
+  background-color: var(--surface);
+  color: var(--foreground);
+  border: none;
+  font-size: 16px;
+}
+
+.workspaces button:hover {
+  background-color: var(--overlay);
+}
+
+.workspaces button.focused {
+  color: var(--green);
+}
+
+/* Clock */
+.clock {
+  color: var(--green);
+  font-weight: bold;
+}
+
+/* System Indicators (CPU, RAM, Audio) */
+.sys-icon {
+  font-size: 16px;
+  padding-right: 5px;
+}
+
+.cpu-icon { color: var(--mauve); }
+.ram-icon { color: var(--yellow); }
+.audio-icon { color: var(--green); }
+
+/* App Launcher */
+.app-launcher {
+  background-color: rgba(13, 13, 13, 0.8); /* Semi-transparent background */
+}
+
+.launcher-entry {
+  background-color: var(--surface);
+  color: var(--foreground);
+  border: 1px solid var(--overlay);
+  border-radius: 12px;
+  font-size: 20px;
+  padding: 12px;
+  caret-color: var(--green);
+}
+
+.launcher-item {
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.launcher-item:hover {
+  background-color: var(--surface);
+}
+
+.launcher-item-icon {
+  font-size: 32px;
+  margin-right: 12px;
+}
+
+.launcher-item-name {
+  color: var(--foreground);
+  font-size: 16px;
+}
