@@ -1,1 +1,319 @@
+/*
+ * Cyber Green Theme
+ * Modified from original Catppuccin Style
+ */
 
+@define-color base     #0d0d0d; /* Base Background */
+@define-color mantle   #1a1a1a; /* Lighter Background */
+@define-color crust    #212121; /* Surface Background */
+
+@define-color text     #dcdcdc; /* Main Text */
+@define-color subtext0 #bbbbbb; /* Brighter Subtext */
+@define-color subtext1 #999999; /* Dimmer Subtext */
+
+@define-color surface0 #2c2c2c;
+@define-color surface1 #383838;
+@define-color surface2 #444444;
+
+@define-color overlay0 #555555;
+@define-color overlay1 #666666;
+@define-color overlay2 #777777;
+
+/* Cyber Accent Colors */
+@define-color green    #39ff14; /* The star of the show */
+@define-color yellow   #ffff00; /* Warnings, alerts */
+@define-color red      #ff3333; /* Critical, errors */
+@define-color mauve    #ff00ff; /* Secondary accent (magenta) */
+@define-color blue     #00bfff; /* Informational */
+
+/* Aliases for compatibility with original theme structure */
+@define-color rosewater @text;
+@define-color flamingo @mauve;
+@define-color pink     @mauve;
+@define-color maroon   @red;
+@define-color peach    @yellow;
+@define-color teal     @green;
+@define-color sky      @blue;
+@define-color sapphire @blue;
+@define-color lavender @mauve;
+
+* {
+  /* `otf-font-awesome` is required for icons */
+  font-family: JetBrainsMono Nerd Font, FontAwesome, sans-serif;
+  font-size: 13px;
+  border-radius: 12px;
+}
+
+window#waybar {
+  background-color: @base;
+  color: @text;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+/*
+Window#waybar.empty {
+    background-color: transparent;
+}
+Window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+button {
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+  background: inherit;
+  box-shadow: inset 0 -3px @text;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  background-color: transparent;
+  color: @text;
+}
+
+#workspaces button:hover {
+  background: @overlay0;
+}
+
+#workspaces button.focused {
+  background-color: @surface1;
+  box-shadow: inset 0 -3px @green;
+}
+
+#workspaces button.urgent {
+  background-color: @red;
+  color: @base;
+}
+
+#mode {
+  background-color: @surface1;
+  border-bottom: 3px solid @text;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd {
+  padding: 0 10px;
+  color: @text;
+}
+
+#window,
+#workspaces {
+  margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+
+#clock {
+  background-color: @surface0;
+  color: @green;
+}
+
+#battery {
+  background-color: @surface0;
+  color: @green;
+}
+
+#battery.charging,
+#battery.plugged {
+  color: @green;
+  background-color: @surface0;
+}
+
+@keyframes blink {
+  to {
+    background-color: @surface0;
+    color: @red;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: @red;
+  color: @base;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label:focus {
+  background-color: #000000;
+}
+
+#cpu {
+  background-color: @surface0;
+  color: @green;
+}
+
+#memory {
+  background-color: @surface0;
+  color: @green;
+}
+
+#disk {
+  background-color: @surface0;
+}
+
+#backlight {
+  background-color: @surface0;
+}
+
+#network {
+  background-color: @surface0;
+  color: @green;
+}
+
+#network.disconnected {
+  background-color: @red;
+  color: @base;
+}
+
+#pulseaudio {
+  background-color: @surface0;
+  color: @green;
+}
+
+#pulseaudio.muted {
+  background-color: @surface2;
+  color: @subtext0;
+}
+
+#wireplumber {
+  background-color: #fff0f5;
+  color: #000000;
+}
+
+#wireplumber.muted {
+  background-color: #f5c2e7;
+}
+
+#custom-media {
+  background-color: @surface1;
+  color: @green;
+  min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+  background-color: @surface0;
+}
+
+#custom-media.custom-vlc {
+  background-color: #ffa000;
+}
+
+#temperature {
+  background-color: @surface0;
+  color: @green;
+}
+
+#temperature.critical {
+  background-color: @red;
+  color: @base;
+}
+
+#tray {
+  background-color: @mantle;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: @red;
+}
+
+#idle_inhibitor {
+  background-color: @surface0;
+}
+
+#idle_inhibitor.activated {
+  background-color: @surface1;
+  color: @subtext0;
+}
+
+#mpd {
+  background-color: #66cc99;
+  color: #2a5c45;
+}
+
+#mpd.disconnected {
+  background-color: #f53c3c;
+}
+
+#mpd.stopped {
+  background-color: #90b1b1;
+}
+
+#mpd.paused {
+  background-color: #51a37a;
+}
+
+#language {
+  background: #00b093;
+  color: #740864;
+  padding: 0 5px;
+  margin: 0 5px;
+  min-width: 16px;
+}
+
+#keyboard-state {
+  background: #97e1ad;
+  color: #000000;
+  padding: 0 0px;
+  margin: 0 5px;
+  min-width: 16px;
+}
+
+#keyboard-state > label {
+  padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+  background-color: transparent;
+  }
+                   
