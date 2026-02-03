@@ -1,8 +1,8 @@
 {
     // A list of modules that will be displayed in sequence on the left side of the bar.
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode"
+        "ext/workspaces",
+        "dwl/windows"
     ],
     // A list of modules that will be displayed in sequence in the center of the bar.
     "modules-center": [
